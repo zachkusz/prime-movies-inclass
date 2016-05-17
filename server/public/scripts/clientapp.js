@@ -12,21 +12,24 @@ function getMovies() {
     success: function (movies) {
       console.log(movies);
       movies.forEach(function (movie) {
-        var favStatus = '-------';
-        if (movie.favorite == true){
-          favStatus = 'Favorited';
-        }
-        $('#movieList').append('<div>' + movie.title +
-          ' | ' + movie.year +
-          ' | ' + movie.genre +
-          ' | ' + movie.director +
-          ' | ' + favStatus +
-          ' | ' + movie.main_actor +
-        '</div>');
+      appendDOM(movie);
       });
     },
   });
+}
 
+function appendDOM(movie){
+  var favStatus = '-------';
+  if (movie.favorite == true){
+    favStatus = 'Favorited';
+  }
+  $('#movieList').append('<div>' + movie.title +
+    ' | ' + movie.year +
+    ' | ' + movie.genre +
+    ' | ' + movie.director +
+    ' | ' + favStatus +
+    ' | ' + movie.main_actor +
+  '</div>');
 }
 
 function postMovie() {
